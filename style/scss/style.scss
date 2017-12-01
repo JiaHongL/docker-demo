@@ -1,0 +1,122 @@
+// test 單行註解將會消失
+/* test 多行註解將會保留 */
+
+@import "index";
+
+// /* 變數的使用 */
+// $b: #008;
+// $name: Tom;
+
+// /* 函式與變數的使用：純粹變數 */
+// @mixin bb($p, $s, $c) {
+//   border: $p $s $c;
+// }
+
+// div {
+//   color: $b;
+//   @include bb(1px, solid, #f00);
+//   span {
+//     color: #c00;
+//   }
+// }
+
+// /* 函式與變數的使用：需要連結字串的面數，要這樣使用 */
+// div.#{$name}{
+//   font-weight:bold;
+// }
+
+// #qq {
+//   margin: 20px;
+// }
+// .aa {
+//   @extend #qq;
+//   color: #0ff;
+// }
+// a {
+//   color: #0ff;
+//   &:hover {
+//     color: #050;
+//   }
+// }
+
+// /* for 迴圈的使用 */
+// @for $i from 1 through 3{
+// 	.item-#{$i}{
+// 		width:$i +px;
+// 	}
+// }
+
+// /* each 的使用 */
+// @each $color in red, blue, green, yellow {
+//   .#{$color}-icon {
+//     background-color: $color;
+//   }
+// }
+
+// /* while 的使用 */
+// $q: 20;
+// @while $q > 0 {
+//   .item-#{$q} { width: 2px * $q; }
+//   $q: $q - 1;
+// }
+
+// /* 陣列變數，後面的"..."這三個小點非常重要，一定要加 */
+// $vs: #f00, #0f0, #00f;
+// @mixin colors($a1, $a2, $a3){
+// 	color:$a1;
+// 	background-color:$a2;
+// 	border-color:$a3;
+// }
+// .p{
+// 	@include colors($vs...);
+// }
+
+// 使用 list nth 的方式定義
+// $colourList: (
+//     1:(#000,#111),
+//     2:(#00f,#00a),
+//     3:(#0f0,#0a0),
+//     4:(#f00,#a00)
+// );
+
+// @each $colourList, $keyNumber in $colourList {
+//     $background: nth($keyNumber, 1);
+//     $lowlight: nth($keyNumber, 2);
+//     header {
+//         .section-#{$colourList}{
+//             background-color: $background;
+//             border-right: 2px dotted $lowlight;
+//         }
+//     }
+// }
+
+
+// /* 使用 map 的方式定義 */
+// $map: (
+//   mm:(
+//     map-color:#f00,
+//     map-bg:#ccc
+//     ),
+//   mmm:(
+//     map-color:#0f0,
+//     map-bg:#000
+//     ),
+//   mmmm:(
+//     map-color:#00f,
+//     map-bg:#aaa
+//     )
+// );
+
+// @each $key, $value in $map {
+//     $text: map-get($value, map-color);
+//     $bg: map-get($value, map-bg);
+//     header {
+//         .section-#{$key}{
+//             color: $text;
+//             background: $bg;
+//             &:hover{
+//               background: darken($bg,10%);
+//             }
+//         }
+//     }
+// }
