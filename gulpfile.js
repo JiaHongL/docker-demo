@@ -1,36 +1,27 @@
 var gulp = require('gulp');
 var webserver = require('gulp-webserver');
-var compass   = require('gulp-compass');
+var sass = require('gulp-sass');
 
-// I.webserver
-gulp.task('webserver', function() {
-  gulp.src('./')
-    .pipe(webserver({
-      port:1234,
-      livereload: true,
-      directoryListing: false,
-      open: true,
-      fallback: 'index.html'
-    }));
+gulp.task('webserver', function () {
+    gulp.src('./')
+        .pipe(webserver({
+            port: 1234,
+            livereload: true,
+            directoryListing: false,
+            open: true,
+            fallback: 'index.html'
+        }));
 });
 
-// II.Sass編譯
-gulp.task('compass',function(){
+gulp.task('sass', function () {
     return gulp.src('./style/scss/*.scss')
-        .pipe(compass({
-            sourcemap: true,
-            time: true,
-      css: './style/css/',
-      sass: './style/scss/',
-      style: 'compact' //nested, expanded, compact, compressed
-        }))
+        .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./style/css/'));
-})
+});
 
-// III.監聽.scss檔案異動
-gulp.task('watch',function(){
-    gulp.watch('./style/scss/*.scss',['compass']);
+gulp.task('sass:watch', function () {
+    gulp.watch('./style/scss/*.scss', ['sass']);
 });
 
 // 預設 task
-gulp.task('default',['webserver','compass','watch']);
+gulp.task('default', ['webserver', 'sass', 'sass:watch']);

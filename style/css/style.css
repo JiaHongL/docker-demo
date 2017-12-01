@@ -1,5 +1,4 @@
 @charset "UTF-8";
 /* test 多行註解將會保留 */
-.pp { color: blue; }
-
-/*# sourceMappingURL=style.css.map */
+.pp {
+  color: red; }
