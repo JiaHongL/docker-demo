@@ -1,4 +1,5 @@
 FROM ubuntu:14.04
+WORKDIR /opt
 MAINTAINER Joe 
 RUN apt-get update
 ARG DEBIAN_FRONTEND=noninteractive
@@ -12,3 +13,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y install nodejs 
 RUN npm install gulp -g 
 RUN npm install node-sass 
+VOLUME ["/opt"]
+CMD ["gulp", "watch"]
+
