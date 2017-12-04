@@ -24,5 +24,4 @@ gulp.task('sass:watch', function () {
     gulp.watch('./style/scss/*.scss', ['sass']);
 });
 
-// 預設 task
 gulp.task('default', ['webserver', 'sass', 'sass:watch']);
