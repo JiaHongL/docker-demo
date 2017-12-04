@@ -5,9 +5,10 @@ var sass = require('gulp-sass');
 gulp.task('webserver', function () {
     gulp.src('./')
         .pipe(webserver({
-            port: 1234,
+            port: 3000,
             livereload: true,
             directoryListing: false,
+            host: '0.0.0.0',
             open: true,
             fallback: 'index.html'
         }));
