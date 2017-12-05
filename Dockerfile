@@ -10,5 +10,5 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y install nodejs 
 RUN npm install gulp@3.9.1 -g 
-WORKDIR /docker-demo
+WORKDIR /app
 EXPOSE 3000 8080 35729
