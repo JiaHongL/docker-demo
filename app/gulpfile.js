@@ -28,6 +28,13 @@ gulp.task('uglify', function () {
         .pipe(babel({
             presets: ['env']
         }))
+        .on('error', function (err) {
+            console.log('[Compilation Error]');
+            console.log(err.fileName + (err.loc ? `( ${err.loc.line}, ${err.loc.column} ): ` : ': '));
+            console.log('error Babel: ' + err.message + '\n');
+            console.log(err.codeFrame);
+            this.emit('end');
+        })
         .pipe(concat('app.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('min'));
@@ -38,4 +45,4 @@ gulp.task('watch', function () {
     gulp.watch('./js/*.js', ['uglify']);
 });
 
-gulp.task('default', ['webserver', 'sass', 'uglify' , 'watch']);
+gulp.task('default', ['webserver', 'sass', 'uglify', 'watch']);

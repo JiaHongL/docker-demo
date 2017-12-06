@@ -1,4 +1,4 @@
-console.log('1111');
+console.log('hi');
 
 var getData = () => {
     var xhttp = new XMLHttpRequest();
