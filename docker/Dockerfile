@@ -11,4 +11,5 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y install nodejs 
 RUN npm install gulp@3.9.1 -g 
 WORKDIR /app
-EXPOSE 3000 8080 35729
+EXPOSE 3000 35729
+

@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var webserver = require('gulp-webserver');
 var sass = require('gulp-sass');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var babel = require('gulp-babel');
 
 gulp.task('webserver', function () {
     gulp.src('./')
@@ -20,8 +23,19 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./style/css/'));
 });
 
-gulp.task('sass:watch', function () {
-    gulp.watch('./style/scss/*.scss', ['sass']);
+gulp.task('uglify', function () {
+    return gulp.src('./js/*.js')
+        .pipe(babel({
+            presets: ['env']
+        }))
+        .pipe(concat('app.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('min'));
 });
 
-gulp.task('default', ['webserver', 'sass', 'sass:watch']);
+gulp.task('watch', function () {
+    gulp.watch('./style/scss/*.scss', ['sass']);
+    gulp.watch('./js/*.js', ['uglify']);
+});
+
+gulp.task('default', ['webserver', 'sass', 'uglify' , 'watch']);
