@@ -263,7 +263,7 @@ docker-compose run --rm --entrypoint /bin/bash api
 docker-compose run --rm --no-deps --service-ports --entrypoint /bin/bash web
 
 --no-deps:設定不啟動相依的後端容器.
---service-ports:docker-compose run 是預設不對接port的.
+--service-ports:docker-compose run 是預設不對接port的，所以要加這選項，把port對接起來.
 ```
 ![](https://1.bp.blogspot.com/-tt--JgheCUQ/WivKqK6QU7I/AAAAAAAAA60/UGwIhUeq_BACmkZmoTTHJI_kgD3r6DuPQCLcBGAs/s640/%25E8%259E%25A2%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%2B2017-12-09%2B%25E4%25B8%258B%25E5%258D%25887.32.23.png)
 
