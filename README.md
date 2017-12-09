@@ -32,6 +32,8 @@
 - **Container** : 安裝image與運行系統的容器，而容器之間都是隔離的。
 - **Docker Hub** : 如同GitHub一樣，是個公開的docker庫，使用者可以pull別人的image下來，或push自己的image提供給別人收尋與使用，如果是自家使用的image，也可以自建私有的Docker Registry.
 
+<br />
+
 ### 指令
 
 #### Image
@@ -74,6 +76,8 @@ docker rmi --help
 docker rmi -f image
 ```
 ![](https://3.bp.blogspot.com/-YqQYDo-upo8/WiuIToMVYXI/AAAAAAAAA28/fJ9-OlukrR47hO8a9WY5g1xvJFg1uB1QACLcBGAs/s640/%25E8%259E%25A2%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%2B2017-12-09%2B%25E4%25B8%258B%25E5%258D%25882.50.25.png)
+
+<br />
 
 #### Container
 
@@ -156,8 +160,12 @@ docker kill CONTAINER
 ## 五、Dockerfile
 &emsp;自己撰寫設定來自製一個image。
 
+<br />
+
 1. 撰寫一個設定檔案.
+
 ![](https://1.bp.blogspot.com/-mc2l09afRKY/WiuisdpXuyI/AAAAAAAAA4k/0_lXWPUo15kHTsOEQQL3x7P8-UhKy2MewCLcBGAs/s640/123.png)
+
 說明：一個以ubuntu 14.04 為基底，另外包安裝node 7.x版本 與 全域 gulp 3.9.1 版本.
 
 2. build image
@@ -204,7 +212,7 @@ docker run --rm -t -v ~/Desktop/docker-demo/app:/app joe/front-end:1.0 npm insta
 docker run --rm -ti -p 0.0.0.0:3000:3000 -p 0.0.0.0:35729:35729 -v "$PWD":/app joe/front-end:1.0 
 
 -p:設定主機與虛擬機的對接port.
-"$PWD":目前路徑資料夾掛載到虛擬機的app資料夾.
+"$PWD":本機目前資料夾路徑.
 
 => 進入後打gulp就可以跑起專案了.
 
@@ -286,5 +294,7 @@ docker-compose up
 
 ## 七、心得
 &emsp;雖然對於前端來說，會安裝到的環境套件並不多，可能在新電腦只要裝個node，就可以再把專案run起來，或是遇到node版本問題，再安裝個nvm做切換版本，就能解決問題，但前端用docker把開發環境與測試環境放進docker做管理也是不錯，而對後端可能安裝到的環境套件就非常多，像是PHP Laveral 就要安裝一大多東西，如 mysql、php、laveral、...等很多套件，或許有時只是學習一個新語言，之後移除的時候，可能就會移除不乾淨，就會把環境弄髒了，其實對後端來說，docker是可以做到更多事，但筆者是個前端沒能理解太多。 
+
+<br />
 
 > 以上文章為筆記，擔心有遺漏之處，如有錯誤觀念或建言，歡迎在[issues](https://github.com/JiaHongL/docker-demo/issues) 提出，感謝.
