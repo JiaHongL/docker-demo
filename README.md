@@ -1,6 +1,8 @@
 ## ㄧ、前提
 &emsp;這是一個學習Docker的筆記，內容是試著將開發環境移到Docker上運行。
 
+<br />
+
 ## 二、Docker簡介
 &emsp;Docker是一種輕量化的虛擬技術，只專注於系統的應用程式執行，並不像傳統VM必須先安裝完整的作業系統(Guest OS)，才能開始安裝或相關應用的執行，所以Docker所需的image(映像檔)也是非常小，而Docker的image也可以包含的套件安裝執行，如安裝一個已帶有Npm與Git的linux環境，另外傳統VM是會獨佔所配置的資源(CPU、記憶體)，而Docker所建立的Container是與主機共享資源，不過Container建立的環境是單獨隔離的，並不會互相影響。
 
@@ -12,6 +14,8 @@
 - 容易部署與遷移系統
 - 易跨平台的虛擬運行(只需安裝好Docker)
 
+<br />
+
 ## 三、前置作業
 
 1. 照著官網文件，完成安裝Docker。
@@ -19,6 +23,8 @@
 
 2. 創一個 Docker Hub 帳號，並使用終端機輸入 docker login，登入帳號。
 ![](https://4.bp.blogspot.com/-dVAaisBEOjk/Witx1Um7t0I/AAAAAAAAA14/MV7NPuOZXOgzCqVLTjmpZ2cD2ptwycyjACLcBGAs/s640/%25E8%259E%25A2%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%2B2017-12-09%2B%25E4%25B8%258B%25E5%258D%25881.16.47.png)
+
+<br />
 
 ## 四、基礎介紹
 ### 名詞
@@ -145,6 +151,8 @@ docker kill CONTAINER
 ```
 ![](https://1.bp.blogspot.com/-HhmPNxV9FjE/Wiu1KpOFB9I/AAAAAAAAA5k/jw7G9InZBD8q6cceQMRLFd2ToDMN4VL8wCLcBGAs/s640/%25E8%259E%25A2%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%2B2017-12-09%2B%25E4%25B8%258B%25E5%258D%25886.03.48.png)
 
+<br />
+
 ## 五、Dockerfile
 &emsp;自己撰寫設定來自製一個image。
 
@@ -207,6 +215,8 @@ docker run --rm -ti -p 0.0.0.0:3000:3000 -p 0.0.0.0:35729:35729 -v "$PWD":/app j
 在本機修改scss後，由虛擬機做compile.
 ![](https://4.bp.blogspot.com/-vGtiNWY7hgM/Wiu57XnuNmI/AAAAAAAAA50/TEPSFq_xs90UM-CDIUGQ9VGCa33LUx9JwCLcBGAs/s640/2.png)
 
+<br />
+
 ## 六、Docker Compose
 &emsp;剛剛利用了Dockerfile製作了自己的image，但如果每次要用時都要設定port和資料掛載的路徑就很麻煩了，另外也可能一次要run很多個容器起來，如先run後端容器，然後再run前端容器，所以就可以利用docker-compose來做設定與跑容器.
 
@@ -259,13 +269,20 @@ docker-compose up
 ![](https://1.bp.blogspot.com/-sB4_gtmGc70/WivO7bDMpPI/AAAAAAAAA7A/m05dvmXTMNsPnUZYQDL8YrOEba_YcnbQgCLcBGAs/s640/%25E8%259E%25A2%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%2B2017-12-09%2B%25E4%25B8%258B%25E5%258D%25887.53.41.png)
 
 修改前端的scss.
+
 ![](https://4.bp.blogspot.com/-JZukqraEa5w/WivSWypImWI/AAAAAAAAA7Q/I2Xu9ETI5O4OLpaWj8BwQCmXQVFWO8iKACLcBGAs/s640/1%2B%25E4%25B8%258B%25E5%258D%25886.43.40.png)
 
 修改後端api的response.
+
 ![](https://4.bp.blogspot.com/-svVnOA2vE4k/WivSEyfiwOI/AAAAAAAAA7M/-eRFBINSqPgwtCZ6Dne82rzBPpEHc4ciwCLcBGAs/s640/%25E8%259E%25A2%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%2B2017-12-09%2B%25E4%25B8%258B%25E5%258D%25888.07.06.png)
 
+<br />
+
 操作影片
+
 [![Everything Is AWESOME](https://img.youtube.com/vi/D0zUSymRJAw/0.jpg)](https://youtu.be/D0zUSymRJAw)
+
+<br />
 
 ## 七、心得
 &emsp;雖然對於前端來說，會安裝到的環境套件並不多，可能在新電腦只要裝個node，就可以再把專案run起來，或是遇到node版本問題，再安裝個nvm做切換版本，就能解決問題，但前端用docker把開發環境與測試環境放進docker做管理也是不錯，而對後端可能安裝到的環境套件就非常多，像是PHP Laveral 就要安裝一大多東西，如 mysql、php、laveral、...等很多套件，或許有時只是學習一個新語言，之後移除的時候，可能就會移除不乾淨，就會把環境弄髒了，其實對後端來說，docker是可以做到更多事，但筆者是個前端沒能理解太多。 
