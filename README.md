@@ -203,7 +203,7 @@ docker run --rm -t -v ~/Desktop/docker-demo/app:/app joe/front-end:1.0 npm insta
 ```
 ![](https://3.bp.blogspot.com/-a2_JpFbizEc/Wius6WJ74GI/AAAAAAAAA5M/w74UYyXdtA8t9Fuxm8jDXa2Zm3rwEkoqACLcBGAs/s640/%25E8%259E%25A2%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%2B2017-12-09%2B%25E4%25B8%258B%25E5%258D%25885.28.39.png)
 
-就可以看到利用了容器的環境安裝了專業所需的套件.
+就可以看到利用了容器的環境安裝了專案所需的套件.
 ![](https://2.bp.blogspot.com/-AabCNnWdwn4/WiuxB3rrSWI/AAAAAAAAA5Y/YxPSV6_c30sYd08l53a8odYBoDc_G2HXgCLcBGAs/s640/%25E8%259E%25A2%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%2B2017-12-09%2B%25E4%25B8%258B%25E5%258D%25885.45.00.png)
 
 4. 利用容器跑專案的開發環境
@@ -238,7 +238,7 @@ docker run --rm -ti -p 0.0.0.0:3000:3000 -p 0.0.0.0:35729:35729 -v "$PWD":/app j
 
 2. 一次建立全部的image
 ```
-docker-compose build .
+docker-compose build
 ```
 
 ![](https://4.bp.blogspot.com/-V1RtW9ScV_k/WivEWjGJq8I/AAAAAAAAA6c/-0yl6I5I-NYZzGMqmSJw-tsheE43489TACLcBGAs/s640/%25E8%259E%25A2%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%2B2017-12-09%2B%25E4%25B8%258B%25E5%258D%25887.07.04.png)
@@ -272,7 +272,7 @@ docker-compose run --rm --no-deps --service-ports --entrypoint /bin/bash web
 ```
 docker-compose up
 
-=> 會看到先跑起api-dev後，才會在跑起web-dev，然後按getData就可以呼叫api取得資料.
+=> 會看到先跑起api-dev後，才會再跑起web-dev，然後按getData就可以呼叫api取得資料.
 ```
 ![](https://1.bp.blogspot.com/-sB4_gtmGc70/WivO7bDMpPI/AAAAAAAAA7A/m05dvmXTMNsPnUZYQDL8YrOEba_YcnbQgCLcBGAs/s640/%25E8%259E%25A2%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%2B2017-12-09%2B%25E4%25B8%258B%25E5%258D%25887.53.41.png)
 
